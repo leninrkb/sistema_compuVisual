@@ -104,6 +104,40 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Observacion: ");
 
+        jtfIDCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfIDCursoActionPerformed(evt);
+            }
+        });
+        jtfIDCurso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfIDCursoKeyTyped(evt);
+            }
+        });
+
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
+
+        jtfNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNivelActionPerformed(evt);
+            }
+        });
+        jtfNivel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNivelKeyTyped(evt);
+            }
+        });
+
+        jtfObservacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfObservacionKeyTyped(evt);
+            }
+        });
+
         jLabel5.setText("Buscar por ID de curso:");
 
         jtfBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +148,9 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
         jtfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfBuscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfBuscarKeyTyped(evt);
             }
         });
 
@@ -340,6 +377,72 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
         BloquearBotonesInicio();
         BloquerJtfInicio();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jtfIDCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIDCursoKeyTyped
+        // TODO add your handling code here:
+      
+        int id = 2;
+        if (jtfIDCurso.getText().length() == id) {
+            evt.consume();
+        }
+        char caracter = evt.getKeyChar();
+
+        if (caracter < '0' || caracter > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfIDCursoKeyTyped
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+
+        if (Character.isDigit(caracter)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfNivelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNivelKeyTyped
+        // TODO add your handling code here:
+        int id = 2;
+        if (jtfNivel.getText().length() == id) {
+            evt.consume();
+        }
+        char caracter = evt.getKeyChar();
+
+        if (caracter < '0' || caracter > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNivelKeyTyped
+
+    private void jtfObservacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfObservacionKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+
+        if (Character.isDigit(caracter)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfObservacionKeyTyped
+
+    private void jtfBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscarKeyTyped
+        // TODO add your handling code here:
+        int id = 2;
+        if (jtfBuscar.getText().length() == id) {
+            evt.consume();
+        }
+        char caracter = evt.getKeyChar();
+
+        if (caracter < '0' || caracter > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfBuscarKeyTyped
+
+    private void jtfIDCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIDCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfIDCursoActionPerformed
+
+    private void jtfNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNivelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

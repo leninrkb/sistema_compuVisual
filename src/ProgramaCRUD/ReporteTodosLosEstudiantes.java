@@ -87,6 +87,7 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Reportar todos los estudiantes");
 

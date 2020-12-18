@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="acd4229a-f81f-4078-a93d-9cfabfefb3d1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     estudiantes.`EST_CEDULA` AS estudiantes_EST_CEDULA,
+     estudiantes.`EST_NOMBRE` AS estudiantes_EST_NOMBRE,
+     estudiantes.`EST_APELLIDO` AS estudiantes_EST_APELLIDO,
+     estudiantes.`EST_DIRECCION` AS estudiantes_EST_DIRECCION,
+     estudiantes.`EST_CIVIL` AS estudiantes_EST_CIVIL,
+     estudiantes.`EST_SEXO` AS estudiantes_EST_SEXO,
+     estudiantes.`cur_id` AS estudiantes_cur_id
+FROM
+     `estudiantes` estudiantes]]>
+	</queryString>
+	<field name="estudiantes_EST_CEDULA" class="java.lang.String"/>
+	<field name="estudiantes_EST_NOMBRE" class="java.lang.String"/>
+	<field name="estudiantes_EST_APELLIDO" class="java.lang.String"/>
+	<field name="estudiantes_EST_DIRECCION" class="java.lang.String"/>
+	<field name="estudiantes_EST_CIVIL" class="java.lang.String"/>
+	<field name="estudiantes_EST_SEXO" class="java.lang.String"/>
+	<field name="estudiantes_cur_id" class="java.lang.Integer"/>
+	<variable name="estudiantes_EST_CEDULA_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{estudiantes_EST_CEDULA}]]></variableExpression>
+	</variable>
+	<variable name="estudiantes_cur_id_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{estudiantes_cur_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="333" y="0" width="120" height="79" uuid="b8b7655b-10c3-4551-ab50-d356e571baf4"/>
+				<textElement textAlignment="Justified">
+					<font size="58"/>
+				</textElement>
+				<text><![CDATA[UTA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="21" forecolor="#FF9999" backcolor="#FFCCCC" uuid="b2d5ac4b-8668-42ba-a072-dbca711a49ae"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="7f76bde4-b17b-4d5f-a674-4e67605db699"/>
+				<text><![CDATA[ESTUDIANTES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="100" height="20" uuid="61b76305-fd39-44d1-8612-bbcc7dca764d"/>
+				<text><![CDATA[CEDULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="0" width="100" height="20" uuid="23f99147-8566-4519-8a95-83724732d943"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="0" width="100" height="20" uuid="7ba13bda-b838-4dd7-8761-333819d560ee"/>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="100" height="20" uuid="4972bdfa-ad25-4332-8f8e-7282d80fb322"/>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="0" width="100" height="20" uuid="3f0d8acb-ec3c-482f-9312-6554739af70f"/>
+				<text><![CDATA[ESTADO CIVIL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="2" width="100" height="20" uuid="34220795-73ca-4a57-91c8-699c9f5f70ee"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_EST_CEDULA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="2" width="100" height="20" uuid="994193e2-81f3-498d-9fba-7eef40b7354a"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_EST_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="2" width="100" height="20" uuid="273092b2-a32b-401e-ace3-734b0acc245f"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_EST_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="2" width="100" height="20" uuid="3eb426fb-004f-420a-9c80-158ce2e1639c"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_EST_DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="2" width="100" height="20" uuid="f24c148b-3a41-4476-8bd3-9c2aab119e7d"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="256" splitType="Stretch">
+			<textField>
+				<reportElement x="103" y="22" width="100" height="20" uuid="7e4a4683-3a2f-4eae-aac8-3d74bba97205"/>
+				<textFieldExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="22" width="100" height="20" uuid="7676802d-c05c-453d-a48f-3f677a36531d"/>
+				<text><![CDATA[# estudiantes: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="103" y="42" width="100" height="20" uuid="2ced3795-c069-4b93-8876-830c790f3eac"/>
+				<textFieldExpression><![CDATA[$V{estudiantes_cur_id_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="42" width="100" height="20" uuid="31771961-3375-4843-b850-58c0eb512def"/>
+				<text><![CDATA[# cursos: ]]></text>
+			</staticText>
+			<barChart>
+				<chart>
+					<reportElement x="249" y="93" width="304" height="148" uuid="1b824cfb-33b5-49e4-bb86-ca461a84009c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Estados civiles por curso"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></categoryExpression>
+						<valueExpression><![CDATA[$V{estudiantes_cur_id_1}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

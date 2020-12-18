@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c049a641-6610-473d-8ed3-06314044ad6b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="genero" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select est_cedula, est_nombre, est_apellido, est_sexo
+from estudiantes
+where est_sexo = $P{genero};]]>
+	</queryString>
+	<field name="est_cedula" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="est_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="est_apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="est_sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="est_cedula_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{est_cedula}]]></variableExpression>
+	</variable>
+	<variable name="est_cedula_2" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{est_cedula}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="239" y="12" width="78" height="48" uuid="95c876e1-41a2-489d-8be0-6821f7cb1452"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[UTA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="215" height="20" uuid="4145ed98-bdc3-4b02-a843-80cfb167dfa6"/>
+				<text><![CDATA[REPORTE GENEROS DE ESTUDIANTES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="4" width="100" height="20" uuid="958e26c0-7197-48b8-9352-940a4dc9fdd6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="100" height="20" uuid="418ecb3a-0781-4126-a3d5-e4e2a8fe94de"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="bce8d8c8-f46e-488c-9eb2-f8392c9d9203"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CEDULA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="132" y="4" width="100" height="20" uuid="9ebaa5d3-555a-41e4-baca-a3325967175c"/>
+				<textFieldExpression><![CDATA[$F{est_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="4" width="100" height="20" uuid="f74ac77b-5806-458e-bb74-8e33cb3f6864"/>
+				<textFieldExpression><![CDATA[$F{est_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="4" width="100" height="20" uuid="52779447-5701-4ac2-ac5d-15847a722b9a"/>
+				<textFieldExpression><![CDATA[$F{est_cedula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="aac3968f-7bc2-4349-bdb5-7833c1601a8d"/>
+				<textFieldExpression><![CDATA[$V{est_cedula_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="266" splitType="Stretch"/>
+	</summary>
+</jasperReport>

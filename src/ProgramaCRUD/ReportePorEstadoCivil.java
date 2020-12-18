@@ -204,7 +204,7 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
             JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reportePorEstadoCivil.jrxml");
             JasperPrint print;
             print = JasperFillManager.fillReport(reporte, parametros, cn);
-            JasperViewer.viewReport(print);
+            JasperViewer.viewReport(print,false);
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(null, "error :(");
         }

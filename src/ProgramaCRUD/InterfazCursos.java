@@ -96,13 +96,17 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setText("ID de Curso: ");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("Ingrese El ID Del Curso: ");
 
-        jLabel2.setText("Nombre");
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("Ingrese El Nombre Del Curso: ");
 
-        jLabel3.setText("Nivel: ");
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("Ingrese El Nivel Del Curso: ");
 
-        jLabel4.setText("Observacion: ");
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("Observación Del Curso: ");
 
         jtfIDCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +142,8 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("Buscar por ID de curso:");
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setText("Buscar Por ID Del Curso:");
 
         jtfBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +179,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfObservacion, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                            .addComponent(jtfObservacion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(jtfNivel)
                             .addComponent(jtfIDCurso)
                             .addComponent(jtfNombre))
@@ -218,42 +223,42 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jbNuevo.setText("Nuevo");
+        jbNuevo.setText("NUEVO");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
 
-        jbGuardar.setText("Guardar");
+        jbGuardar.setText("GUARDAR");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
 
-        jbActualizar.setText("Actualizar");
+        jbActualizar.setText("ACTUALIZAR");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbActualizarActionPerformed(evt);
             }
         });
 
-        jbEliminar.setText("Eliminar");
+        jbEliminar.setText("ELIMINAR");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
             }
         });
 
-        jbCancelar.setText("Cancelar");
+        jbCancelar.setText("CANCELAR");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCancelarActionPerformed(evt);
             }
         });
 
-        jbSalir.setText("Cerrar");
+        jbSalir.setText("CERRAR");
         jbSalir.setToolTipText("Cerrar esta ventana.");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,7 +273,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -327,11 +332,13 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
 
     private void jtfBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBuscarActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jtfBuscarActionPerformed
 
     private void jtfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscarKeyReleased
         // TODO add your handling code here:
         CargarTablaCursos(jtfBuscar.getText());
+
     }//GEN-LAST:event_jtfBuscarKeyReleased
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -344,10 +351,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         InsertarCurso();
-        LimpiarJTF();
-        BloquearBotonesInicio();
-        BloquerJtfInicio();
-        
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
@@ -380,7 +384,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
 
     private void jtfIDCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIDCursoKeyTyped
         // TODO add your handling code here:
-      
+
         int id = 2;
         if (jtfIDCurso.getText().length() == id) {
             evt.consume();
@@ -394,7 +398,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
 
     private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
         // TODO add your handling code here:
-         char caracter = evt.getKeyChar();
+        char caracter = evt.getKeyChar();
 
         if (Character.isDigit(caracter)) {
             evt.consume();
@@ -470,7 +474,7 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfObservacion;
     // End of variables declaration//GEN-END:variables
 
-public void BloquearBotonesInicio() {
+    public void BloquearBotonesInicio() {
         jbNuevo.setEnabled(true);
         jbActualizar.setEnabled(false);
         jbCancelar.setEnabled(false);
@@ -542,7 +546,7 @@ public void BloquearBotonesInicio() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 if (jTableRegistros.getSelectedRow() != -1) {
-                    
+
                     jtfIDCurso.setText(jTableRegistros.getValueAt(jTableRegistros.getSelectedRow(), 0).toString());
                     jtfNombre.setText(jTableRegistros.getValueAt(jTableRegistros.getSelectedRow(), 1).toString());
                     jtfNivel.setText(jTableRegistros.getValueAt(jTableRegistros.getSelectedRow(), 2).toString());
@@ -553,28 +557,30 @@ public void BloquearBotonesInicio() {
             }
         });
     }
-    
-     private void InsertarCurso() {
+
+    private void InsertarCurso() {
         if (jtfIDCurso.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nro. de ID de Curso");
+            JOptionPane.showMessageDialog(this, "Ingrese El Nro. De Id Del Curso", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfIDCurso.requestFocus();
         } else if (jtfNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nombre");
+            JOptionPane.showMessageDialog(this, "Ingrese El Nombre Del Curso", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
             jtfNombre.requestFocus();
         } else if (jtfNivel.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nivel");
+            JOptionPane.showMessageDialog(this, "Ingrese El Nivel Del Curso", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
             jtfNivel.requestFocus();
         } else {
             try {
 
                 String idCurso = jtfIDCurso.getText();
-                String nombre = jtfNombre.getText();
+                String nombre = jtfNombre.getText().toString().toUpperCase();
                 String nivel = jtfNivel.getText();
                 String observacion;
                 if (jtfObservacion.getText().isEmpty()) {
-                    observacion = "Sin observacion".toUpperCase();
+                    observacion = "Sin observación".toUpperCase();
                 } else {
-                    observacion = jtfObservacion.getText();
+                    observacion = jtfObservacion.getText().toString().toUpperCase();
                 }
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
@@ -587,10 +593,13 @@ public void BloquearBotonesInicio() {
                 psd.setString(4, observacion);
 
                 psd.executeUpdate();
+                BloquearBotonesInicio();
                 CargarTablaCursos("");
-                JOptionPane.showMessageDialog(this, "Registro agregado exitosamente!");
+                LimpiarJTF();
+                JOptionPane.showMessageDialog(this, "¡ Registro De Curso Agregado Exitosamente!");
                 cn.close();
-            } catch (Exception ex) {JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -599,7 +608,7 @@ public void BloquearBotonesInicio() {
 
     public void CargarTablaCursos(String dato) {
         try {
-            String[] registros = {"ID Curso", "Nombre", "Nivel", "Observacion"};
+            String[] registros = {"ID CURSO", "NOMBRE", "NIVEL", "OBSERVACIÓN"};
             String[] datos = new String[6];
             dtm = new DefaultTableModel(null, registros);
 
@@ -616,7 +625,8 @@ public void BloquearBotonesInicio() {
                 dtm.addRow(datos);
             }
             jTableRegistros.setModel(dtm);
-        } catch (Exception ex) {JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -626,14 +636,17 @@ public void BloquearBotonesInicio() {
             Connection cn = cc.conectar();
             String sqlUpd = "";
             sqlUpd = "UPDATE curso SET cur_nivel='" + jtfNivel.getText()
-                    + "', cur_nombre='" + jtfNombre.getText()
-                    + "', cur_obs='" + jtfObservacion.getText()
+                    + "', cur_nombre='" + jtfNombre.getText().toString().toUpperCase()
+                    + "', cur_obs='" + jtfObservacion.getText().toString().toUpperCase()
                     + "' WHERE cur_id='" + jtfIDCurso.getText() + "';";
             PreparedStatement psd = cn.prepareStatement(sqlUpd);
             int n = psd.executeUpdate();
             CargarTablaCursos("");
+            BloquearBotonesInicio();
+            BloquerJtfInicio();
+            LimpiarJTF();
             if (n > 0) {
-                JOptionPane.showMessageDialog(this, "Datos actualizados correctamente");
+                JOptionPane.showMessageDialog(this, "¡ Datos Actualizados Correctamente !");
             }
 
         } catch (Exception ex) {
@@ -646,8 +659,8 @@ public void BloquearBotonesInicio() {
         try {
             if (jTableRegistros.getSelectedRow() != -1
                     && JOptionPane.showConfirmDialog(this,
-                            "Seguro que desea eliminar este registro?",
-                            "Confirmar eliminar registro",
+                            "¿Realmente Desea Eliminar Este Curso?",
+                            "Confirmar Eliminar Curso",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE) == 0) {
                 Conexion cc = new Conexion();
@@ -657,7 +670,7 @@ public void BloquearBotonesInicio() {
                 int n = psd.executeUpdate();
                 CargarTablaCursos("");
                 if (n > 0) {
-                    JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente!");
+                    JOptionPane.showMessageDialog(this, "¡ Curso Eliminado Exitosamente !");
                 }
                 BloquearBotonesInicio();
                 BloquerJtfInicio();

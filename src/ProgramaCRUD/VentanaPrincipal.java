@@ -27,6 +27,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         CambioPorTipoUser(tipouser);
         AgregarVentanas();
         setExtendedState(MAXIMIZED_BOTH); 
+        this.setTitle("UTA");
         
     }
 
@@ -98,12 +99,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jdpVentanaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(646, Short.MAX_VALUE))
+                .addContainerGap(642, Short.MAX_VALUE))
         );
 
         jMenuVentanas.setText("Ventanas");
+        jMenuVentanas.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         jMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemUsuarios.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuItemUsuarios.setText("Usuarios");
         jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuVentanas.add(jSeparator2);
 
         jMenuItemCursos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCursos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuItemCursos.setText("Cursos");
         jMenuItemCursos.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
             public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
@@ -137,6 +141,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuVentanas.add(jMenuItemCursos);
 
         jMenuItemEstudiantes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemEstudiantes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuItemEstudiantes.setText("Estudiantes");
         jMenuItemEstudiantes.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
             public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
@@ -157,8 +162,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuVentanas);
 
         jMenuReportes.setText("Reportes");
+        jMenuReportes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         repote_porTodosEstudiantes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        repote_porTodosEstudiantes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         repote_porTodosEstudiantes.setText("Todos los estudiantes");
         repote_porTodosEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +176,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuReportes.add(jSeparator1);
 
         reporte_porGenero.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_MASK));
+        reporte_porGenero.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         reporte_porGenero.setText("Estudiantes por Genero");
         reporte_porGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuReportes.add(reporte_porGenero);
 
         reporte_porEstadoCivil.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        reporte_porEstadoCivil.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         reporte_porEstadoCivil.setText("Estudiantes por Estado Civil");
         reporte_porEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuReportes.add(reporte_porEstadoCivil);
 
         reporte_porCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        reporte_porCurso.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         reporte_porCurso.setText("Estudiantes por Curso");
         reporte_porCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +208,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuReportes);
 
         jMenuSalir.setText("Salir");
+        jMenuSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuSalirActionPerformed(evt);
@@ -205,7 +216,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jMenuItemCerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemCerrarSesion.setText("Cerrar Sesion");
+        jMenuItemCerrarSesion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jMenuItemCerrarSesion.setText("Cerrar Sesión");
         jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemCerrarSesionActionPerformed(evt);
@@ -215,6 +227,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuSalir.add(jSeparator3);
 
         jMenuItemCerrarPrograma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCerrarPrograma.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuItemCerrarPrograma.setText("Cerrar Programa");
         jMenuItemCerrarPrograma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +292,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuariosActionPerformed
         // TODO add your handling code here:
-
         AbrirVentanaUsuarios();
     }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
 
@@ -333,6 +345,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -441,10 +454,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     private void AbrirVentanaUsuarios() {
+        
         if (!iu.isVisible()) {
             iu.setLocation((jdpVentanaPrincipal.getWidth() - iu.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - iu.getHeight()) / 2);
             iu.setVisible(true);
+            iu.setTitle("Interfaz Usuarios");
         } else {
             iu.setLocation((jdpVentanaPrincipal.getWidth() - iu.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - iu.getHeight()) / 2);
@@ -457,6 +472,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             ic.setLocation((jdpVentanaPrincipal.getWidth() - ic.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - ic.getHeight()) / 2);
             ic.setVisible(true);
+            ic.setTitle("Interfaz Cursos");
         } else {
             ic.setLocation((jdpVentanaPrincipal.getWidth() - ic.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - ic.getHeight()) / 2);
@@ -471,6 +487,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             ie.setLocation((jdpVentanaPrincipal.getWidth() - ie.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - ie.getHeight()) / 2);
             ie.setVisible(true);
+            ie.setTitle("Interfaz Estudiantes");
         } else {
             ie.setLocation((jdpVentanaPrincipal.getWidth() - ie.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - ie.getHeight()) / 2);
@@ -480,8 +497,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void CerrarSesion() {
         if (JOptionPane.showConfirmDialog(this,
-                "Seguro que desea cerrar sesion?",
-                "Cerrar sesion",
+                "¿Realmente Desea Cerrar La Sesión?",
+                "Cerrar Sesión",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE) == 0) {
             LoginCRUD login = new LoginCRUD();
@@ -492,9 +509,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void SalirPrograma() {
         if (JOptionPane.showConfirmDialog(this,
-                "Seguro que desea salir del programa? "
-                + "\n\nNota: Esto cerrara todas las ventanas y procesos",
-                "Cerrar programa",
+                "¿Realmente Desea Salir Del Programa? "
+                + "\n\nNota: Esto Cerrará Todas Las Ventanas Y Procesos",
+                "Cerrar Programa",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE) == 0) {
             System.exit(0);

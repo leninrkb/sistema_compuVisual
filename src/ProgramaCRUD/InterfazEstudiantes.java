@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author stee-
  */
-public class InterfazEstudiantes extends javax.swing.JInternalFrame {
+public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InterfazEstudiantes
@@ -34,7 +35,9 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         BloquerJtfInicio();
         CargarTablaEstudiantes("");
         LeerDatosTabla();
-        cargarIdCurso();
+        Cargar_Dir_Est();
+        cargarCursos();
+        
     }
 
     public void BloquearBotonesInicio() {
@@ -60,11 +63,12 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
     public void BloquerJtfInicio() {
         jtfApellido.setEnabled(false);
         jtfCedula.setEnabled(false);
-        jtfDireccion.setEnabled(false);
+        jComboBox_Direccion.setEnabled(false);
         jtfNombre.setEnabled(false);
         jcbECivil.setEnabled(false);
         jrbMasculino.setEnabled(false);
         jrbFemenino.setEnabled(false);
+        jComboBox1_curso.setEnabled(false);
     }
 
     public void BloquearBotonesNuevo() {
@@ -83,33 +87,35 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jbEliminar.setEnabled(true);
         jbGuardar.setEnabled(true);
         jbSalir.setEnabled(false);
+        
 
     }
 
     public void DesBloquerJtfInicio() {
         jtfApellido.setEnabled(true);
         jtfCedula.setEnabled(true);
-        jtfDireccion.setEnabled(true);
+        jComboBox_Direccion.setEnabled(true);
         jtfNombre.setEnabled(true);
         jcbECivil.setEnabled(true);
         jrbMasculino.setEnabled(true);
         jrbFemenino.setEnabled(true);
+        jComboBox1_curso.setEnabled(true);
     }
 
-    public void DesBloquerJtfActualizar() {
+    public void DesBloquerJtfActualizar(){
         jtfCedula.setEnabled(false);
         jtfApellido.setEnabled(true);
-        jtfDireccion.setEnabled(true);
+        jComboBox_Direccion.setEnabled(true);
         jtfNombre.setEnabled(true);
         jcbECivil.setEnabled(true);
         jrbMasculino.setEnabled(true);
         jrbFemenino.setEnabled(true);
+        jComboBox1_curso.setEnabled(true);
     }
 
     public void LimpiarJTF() {
         jtfApellido.setText("");
         jtfCedula.setText("");
-        jtfDireccion.setText("");
         jtfNombre.setText("");
     }
 
@@ -122,9 +128,9 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                     jtfCedula.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 0).toString());
                     jtfNombre.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 1).toString());
                     jtfApellido.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 2).toString());
-                    jtfDireccion.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 3).toString());
+                    jComboBox_Direccion.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 3).toString());
                     jcbECivil.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 4).toString());
-                    jComboBox1_idCurso.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 6).toString());
+                    jComboBox1_curso.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 6).toString());
                     if (jrbMasculino.getText().equals(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 5).toString())) {
                         jrbMasculino.setSelected(true);
                     } else {
@@ -135,6 +141,23 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 }
             }
         });
+    }
+
+    public void cargarCursos() {
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            String sqlIns = "select * from curso ";
+            java.sql.Statement psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sqlIns);
+            DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
+            jComboBox1_curso.setModel(dcbm);
+            while (rs.next()) {
+                jComboBox1_curso.addItem(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void CargarCBEstCivil() {
@@ -153,22 +176,24 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void cargarIdCurso() {
+
+    public void Cargar_Dir_Est() {
         try {
+            jComboBox_Direccion.removeAllItems();
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            String sqlIns = "select * from curso ";
-            java.sql.Statement psd = cn.createStatement();
-            ResultSet rs = psd.executeQuery(sqlIns);
-            DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
-            jComboBox1_idCurso.setModel(dcbm);
+            String sql = " ";
+            sql = "select * from direccion";
+            Statement psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sql);
+
             while (rs.next()) {
-                jComboBox1_idCurso.addItem(rs.getString(1));
+                jComboBox_Direccion.addItem(rs.getString(2));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex);
         }
+
     }
 
     /**
@@ -181,6 +206,7 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroupSexo = new javax.swing.ButtonGroup();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableRegistrosEstudiantes = new javax.swing.JTable();
@@ -192,7 +218,6 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jtfCedula = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfApellido = new javax.swing.JTextField();
-        jtfDireccion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -201,8 +226,9 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jrbMasculino = new javax.swing.JRadioButton();
         jrbFemenino = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jComboBox_Direccion = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1_idCurso = new javax.swing.JComboBox<>();
+        jComboBox1_curso = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jbNuevo = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
@@ -211,7 +237,13 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jbCancelar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jTableRegistrosEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -233,26 +265,59 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel1.setText("Cedula");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("Ingrese La Cédula:");
 
-        jLabel2.setText("Nombre");
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("Ingrese El Nombre:");
 
-        jLabel3.setText("Apellido");
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("Ingrese El Apellido:");
 
-        jLabel4.setText("Direccion");
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("Seleccione La Dirección:");
 
-        jLabel5.setText("Buscar por Cedula:");
+        jtfCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCedulaActionPerformed(evt);
+            }
+        });
+        jtfCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCedulaKeyTyped(evt);
+            }
+        });
+
+        jtfNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtfNombreMouseClicked(evt);
+            }
+        });
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
+
+        jtfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfApellidoKeyTyped(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setText("Buscar Por Cédula:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,11 +328,16 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
         });
 
-        jLabel6.setText("Estado Civil:");
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("Seleccione El Estado Civil:");
 
-        jLabel7.setText("Sexo:");
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setText("Seleccione El Sexo:");
 
         jcbECivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbECivil.addActionListener(new java.awt.event.ActionListener() {
@@ -277,12 +347,22 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         buttonGroupSexo.add(jrbMasculino);
-        jrbMasculino.setText("Masculino");
+        jrbMasculino.setText("MASCULINO");
+        jrbMasculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMasculinoActionPerformed(evt);
+            }
+        });
 
         buttonGroupSexo.add(jrbFemenino);
-        jrbFemenino.setText("Femenino");
+        jrbFemenino.setText("FEMENINO");
 
-        jLabel8.setText("Id curso");
+        jComboBox_Direccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setText("Seleccione el curso:");
+
+        jComboBox1_curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,12 +372,6 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jSeparator1))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5)
-                .addGap(43, 43, 43)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -306,20 +380,32 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(86, 86, 86)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfDireccion)
-                    .addComponent(jtfApellido)
-                    .addComponent(jcbECivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtfCedula)
-                    .addComponent(jtfNombre)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jrbMasculino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jrbFemenino))
-                    .addComponent(jComboBox1_idCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(105, 105, 105))
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel5))
+                    .addComponent(jLabel8))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrbMasculino)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbFemenino)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jComboBox1_curso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbECivil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtfCedula, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox_Direccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(105, 105, 105))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,65 +428,65 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jtfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbECivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jComboBox1_idCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbMasculino)
-                    .addComponent(jrbFemenino)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1_curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jrbMasculino)
+                    .addComponent(jrbFemenino))
+                .addGap(24, 24, 24)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jbNuevo.setText("Nuevo");
+        jbNuevo.setText("NUEVO");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
 
-        jbGuardar.setText("Guardar");
+        jbGuardar.setText("GUARDAR");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
 
-        jbActualizar.setText("Actualizar");
+        jbActualizar.setText("ACTUALIZAR");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbActualizarActionPerformed(evt);
             }
         });
 
-        jbEliminar.setText("Eliminar");
+        jbEliminar.setText("ELIMINAR");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
             }
         });
 
-        jbCancelar.setText("Cancelar");
+        jbCancelar.setText("CANCELAR");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCancelarActionPerformed(evt);
             }
         });
 
-        jbSalir.setLabel("Cerrar");
+        jbSalir.setText("CERRAR");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -414,7 +500,7 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -431,15 +517,15 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar))
-                .addGap(18, 18, 18)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbActualizar)
                     .addComponent(jbEliminar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbSalir)
-                    .addComponent(jbCancelar))
-                .addContainerGap(111, Short.MAX_VALUE))
+                    .addComponent(jbCancelar)
+                    .addComponent(jbSalir))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -486,7 +572,7 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         InsertarEstudiante();
-        LimpiarJTF();
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
@@ -525,13 +611,75 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbECivilActionPerformed
 
+    private void jtfCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCedulaActionPerformed
+
+    private void jtfCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCedulaKeyTyped
+        // TODO add your handling code here:
+        int ced = 10;
+        if (jtfCedula.getText().length() == ced) {
+            evt.consume();
+        }
+        char caracter = evt.getKeyChar();
+
+        if (caracter < '0' || caracter > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfCedulaKeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        int ced = 10;
+        if (jTextField1.getText().length() == ced) {
+            evt.consume();
+        }
+        char caracter = evt.getKeyChar();
+
+        if (caracter < '0' || caracter > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+
+        if (Character.isDigit(caracter)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidoKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+
+        if (Character.isDigit(caracter)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfApellidoKeyTyped
+
+    private void jtfNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombreMouseClicked
+        // TODO add your handling code here:
+        int ced = 10;
+        if (jtfCedula.getText().length() < ced) {
+            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            jtfCedula.requestFocus();
+        }
+    }//GEN-LAST:event_jtfNombreMouseClicked
+
+    private void jrbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMasculinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbMasculinoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSexo;
-    private javax.swing.JComboBox<String> jComboBox1_idCurso;
+    private javax.swing.JComboBox<String> jComboBox1_curso;
+    private javax.swing.JComboBox jComboBox_Direccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -543,6 +691,7 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableRegistrosEstudiantes;
@@ -558,49 +707,56 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbMasculino;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfCedula;
-    private javax.swing.JTextField jtfDireccion;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
 
     /*
-1.  conectar BDD
-2.  Crear sentencia SQL
-4.  Preparar sentencia SQL (PreparedStatement)(insert,update,delete)   calledStatement(plsql)    Statement(select (solo consulta))
-5.  Ejecutar Statement
+     1.  conectar BDD
+     2.  Crear sentencia SQL
+     4.  Preparar sentencia SQL (PreparedStatement)(insert,update,delete)   calledStatement(plsql)    Statement(select (solo consulta))
+     5.  Ejecutar Statement
      */
     private void InsertarEstudiante() {
+        int ced = 10;
         if (jtfCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nro. de cedula");
+            JOptionPane.showMessageDialog(this, "Ingrese El Nro. De Cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
+        } else if (jtfCedula.getText().length() < ced) {
+            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            jtfCedula.requestFocus();
+
         } else if (jtfNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el Nombre");
+            JOptionPane.showMessageDialog(this, "Ingrese El Nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfNombre.requestFocus();
         } else if (jtfApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el Apellido");
+            JOptionPane.showMessageDialog(this, "Ingrese El Apellido", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfApellido.requestFocus();
         } else {
             try {
 
-                String cedula = jtfCedula.getText();
-                String nombre = jtfNombre.getText();
-                String apellido = jtfApellido.getText();
-                String direccion;
-                if (jtfDireccion.getText().isEmpty()) {
-                    direccion = "Sin direccion".toUpperCase();
-                } else {
-                    direccion = jtfDireccion.getText();
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                String sqlselect = "select cur_id from curso where cur_nombre ='"+jComboBox1_curso.getSelectedItem().toString().toUpperCase()+"'";
+                java.sql.Statement psd1 = cn.createStatement();
+                ResultSet rs = psd1.executeQuery(sqlselect);
+                String curso ="";
+                while (rs.next()) {
+                    curso = rs.getString(1);
                 }
-                String estcivil = jcbECivil.getSelectedItem().toString();
-                String idcurso = jComboBox1_idCurso.getSelectedItem().toString();
+                String cedula = jtfCedula.getText();
+                String nombre = jtfNombre.getText().toUpperCase();
+                String apellido = jtfApellido.getText().toUpperCase();
+                String direccion = jComboBox_Direccion.getSelectedItem().toString();
+                String estcivil = jcbECivil.getSelectedItem().toString().toUpperCase();
+                
                 String sexo;
                 if (jrbMasculino.isSelected()) {
                     sexo = jrbMasculino.getText();
                 } else {
                     sexo = jrbFemenino.getText();
                 }
-                Conexion cc = new Conexion();
-                Connection cn = cc.conectar();
+              
                 String sqlIns = "";
                 sqlIns = "insert into estudiantes values(?,?,?,?,?,?,?)";
                 PreparedStatement psd = cn.prepareStatement(sqlIns);
@@ -610,11 +766,12 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 psd.setString(4, direccion);
                 psd.setString(5, estcivil);
                 psd.setString(6, sexo);
-                psd.setString(7, idcurso);
+                psd.setString(7, curso);
 
                 psd.executeUpdate();
                 CargarTablaEstudiantes("");
-                JOptionPane.showMessageDialog(this, "Registro agregado exitosamente!");
+                LimpiarJTF();
+                JOptionPane.showMessageDialog(this, "¡ Registro Agregado Exitosamente !");
                 cn.close();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
@@ -626,23 +783,23 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     public void CargarTablaEstudiantes(String dato) {
         try {
-            String[] registros = {"Cedula", "Nombre", "Apellido", "Direccion", "Est. Civil", "Sexo","curso"};
+            String[] registros = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECCIÓN", "EST. CIVIL", "SEXO", "CURSO"};
             String[] datos = new String[7];
             dtm = new DefaultTableModel(null, registros);
 
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            String sqlIns = "select * from estudiantes where EST_CEDULA LIKE '%" + dato + "%' order by EST_CEDULA ";
+            String sqlIns = "select * from estudiantes e, curso c where e.EST_CEDULA LIKE '%" + dato + "%' and c.cur_id = e.cur_id group by est_cedula";
             java.sql.Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sqlIns);
             while (rs.next()) {
-                datos[0] = rs.getString("EST_CEDULA");
-                datos[1] = rs.getString("EST_NOMBRE");
-                datos[2] = rs.getString("EST_APELLIDO");
-                datos[3] = rs.getString("EST_DIRECCION");
-                datos[4] = rs.getString("EST_CIVIL");
-                datos[5] = rs.getString("EST_SEXO");
-                datos[6] = rs.getString("cur_id");
+                datos[0] = rs.getString("e.EST_CEDULA");
+                datos[1] = rs.getString("e.EST_NOMBRE");
+                datos[2] = rs.getString("e.EST_APELLIDO");
+                datos[3] = rs.getString("e.EST_DIRECCION");
+                datos[4] = rs.getString("e.EST_CIVIL");
+                datos[5] = rs.getString("e.EST_SEXO");
+                datos[6] = rs.getString("c.cur_nombre");
                 dtm.addRow(datos);
             }
             jTableRegistrosEstudiantes.setModel(dtm);
@@ -653,8 +810,16 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     public void ModificarEstudiantes() {
         try {
-            Conexion cc = new Conexion();
-            Connection cn = cc.conectar();
+            
+             Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                String sqlselect = "select cur_id from curso where cur_nombre ='"+jComboBox1_curso.getSelectedItem().toString().toUpperCase()+"'";
+                java.sql.Statement psd1 = cn.createStatement();
+                ResultSet rs = psd1.executeQuery(sqlselect);
+                String curso ="";
+                while (rs.next()) {
+                    curso = rs.getString(1);
+                }
             String sqlUpd = "";
             String sexo;
             if (jrbMasculino.isSelected()) {
@@ -662,18 +827,22 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
             } else {
                 sexo = jrbFemenino.getText();
             }
-            sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText()
-                    + "', EST_NOMBRE='" + jtfNombre.getText()
-                    + "', EST_DIRECCION='" + jtfDireccion.getText()
-                    + "', EST_CIVIL='" + jcbECivil.getSelectedItem().toString()
+            System.out.println(curso);
+            sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText().toUpperCase()
+                    + "', EST_NOMBRE='" + jtfNombre.getText().toUpperCase()
+                    + "', EST_DIRECCION='" + jComboBox_Direccion.getSelectedItem()
+                    + "', EST_CIVIL='" + jcbECivil.getSelectedItem().toString().toUpperCase()
                     + "', EST_SEXO='" + sexo
-                    + "', cur_id='" + jComboBox1_idCurso.getSelectedItem().toString()
+                    + "', cur_id='" + curso
                     + "' WHERE EST_CEDULA='" + jtfCedula.getText() + "';";
             PreparedStatement psd = cn.prepareStatement(sqlUpd);
             int n = psd.executeUpdate();
             CargarTablaEstudiantes("");
+            BloquearBotonesInicio();
+            BloquerJtfInicio();
+            LimpiarJTF();
             if (n > 0) {
-                JOptionPane.showMessageDialog(this, "Datos actualizados correctamente");
+                JOptionPane.showMessageDialog(this, "¡ Datos Actualizados Correctamente !");
             }
 
         } catch (Exception ex) {
@@ -686,8 +855,8 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
         try {
             if (jTableRegistrosEstudiantes.getSelectedRow() != -1
                     && JOptionPane.showConfirmDialog(this,
-                            "Seguro que desea eliminar este registro?",
-                            "Confirmar eliminar registro",
+                            "¿Realmente Desea Eliminar Este Estudiante?",
+                            "Confirmar Eliminar Estudiante",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE) == 0) {
                 Conexion cc = new Conexion();
@@ -697,7 +866,7 @@ public class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 int n = psd.executeUpdate();
                 CargarTablaEstudiantes("");
                 if (n > 0) {
-                    JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente!");
+                    JOptionPane.showMessageDialog(this, "¡ Estudiante Eliminado Exitosamente !");
                 }
                 BloquearBotonesInicio();
                 BloquerJtfInicio();

@@ -121,16 +121,16 @@ FROM
 			</staticText>
 			<barChart>
 				<chart>
-					<reportElement x="249" y="93" width="304" height="148" uuid="1b824cfb-33b5-49e4-bb86-ca461a84009c"/>
+					<reportElement x="347" y="156" width="200" height="100" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA["Estados civiles por curso"]]></seriesExpression>
+						<seriesExpression><![CDATA["estudiantes"]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></categoryExpression>
-						<valueExpression><![CDATA[$V{estudiantes_cur_id_1}]]></valueExpression>
+						<valueExpression><![CDATA[$V{COLUMN_COUNT}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>

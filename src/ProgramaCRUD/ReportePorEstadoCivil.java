@@ -6,6 +6,7 @@
 package ProgramaCRUD;
 
 import ConexionCRUD.Conexion;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,7 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -55,6 +57,7 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
         jButton1_reportar = new javax.swing.JButton();
         jButton1_cerrar = new javax.swing.JButton();
         jComboBox1_estadoCivil = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
 
         jInternalFrame1.setVisible(true);
 
@@ -82,7 +85,12 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
             .addGap(0, 154, Short.MAX_VALUE)
         );
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("reporte por estado civil");
 
         jLabel1.setText("seleccione el estado civil a reportar");
 
@@ -100,21 +108,35 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jComboBox1_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(jButton1_reportar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1_cerrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1_cerrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jComboBox1_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton1_reportar)
+                        .addGap(0, 461, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +149,9 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButton1_reportar)
                     .addComponent(jComboBox1_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -204,7 +228,10 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
             JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reportePorEstadoCivil.jrxml");
             JasperPrint print;
             print = JasperFillManager.fillReport(reporte, parametros, cn);
-            JasperViewer.viewReport(print,false);
+            //JasperViewer.viewReport(print,false);
+            JRViewer v = new JRViewer(print);
+                jPanel1.setLayout(new BorderLayout());
+                jPanel1.add(v);
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(null, "error :(");
         }
@@ -216,5 +243,6 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

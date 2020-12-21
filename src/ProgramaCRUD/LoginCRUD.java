@@ -29,8 +29,7 @@ public class LoginCRUD extends javax.swing.JFrame {
      */
     public LoginCRUD() {
         initComponents();
-        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("wb.png"));
-        this.setIconImage(ico);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("wb.png")));
     }
 
     /**

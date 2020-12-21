@@ -6,6 +6,7 @@
 package ProgramaCRUD;
 
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal(String tipouser) {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("wb.png")));
         jdpVentanaPrincipal.setBorder(new ImagenFondo());
         this.setExtendedState(VentanaPrincipal.MAXIMIZED_BOTH); 
         CambioPorTipoUser(tipouser);

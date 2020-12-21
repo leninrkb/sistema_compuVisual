@@ -155,12 +155,12 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jComboBox1_curso" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jcbCurso" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jtfApellido" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jcbECivil" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jtfCedula" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jtfNombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBox_Direccion" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jcbDireccion" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                               </Group>
@@ -196,7 +196,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox_Direccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -205,7 +205,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboBox1_curso" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCurso" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="11" max="32767" attributes="0"/>
@@ -330,7 +330,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroupSexo"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="MASCULINO"/>
+            <Property name="text" type="java.lang.String" value="Masculino"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbMasculinoActionPerformed"/>
@@ -341,12 +341,12 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroupSexo"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FEMENINO"/>
+            <Property name="text" type="java.lang.String" value="Femenino"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_Direccion">
+        <Component class="javax.swing.JComboBox" name="jcbDireccion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -366,7 +366,7 @@
             <Property name="text" type="java.lang.String" value="Seleccione el curso:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1_curso">
+        <Component class="javax.swing.JComboBox" name="jcbCurso">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">

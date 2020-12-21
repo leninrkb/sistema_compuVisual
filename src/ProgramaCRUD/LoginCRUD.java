@@ -6,6 +6,8 @@
 package ProgramaCRUD;
 
 import ConexionCRUD.Conexion;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +29,8 @@ public class LoginCRUD extends javax.swing.JFrame {
      */
     public LoginCRUD() {
         initComponents();
+        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("wb.png"));
+        this.setIconImage(ico);
     }
 
     /**

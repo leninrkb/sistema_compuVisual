@@ -631,8 +631,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
-        int ced = 10;
-        if (jTextField1.getText().length() == ced) {
+        if (jTextField1.getText().length() == 10) {
             evt.consume();
         }
         char caracter = evt.getKeyChar();
@@ -662,8 +661,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     private void jtfNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombreMouseClicked
         // TODO add your handling code here:
-        int ced = 10;
-        if (jtfCedula.getText().length() < ced) {
+        if (jtfCedula.getText().length() < 10) {
             JOptionPane.showMessageDialog(this, "La cédula debe ser de 10 dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
         }
@@ -719,11 +717,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
      5.  Ejecutar Statement
      */
     private void InsertarEstudiante() {
-        int ced = 10;
         if (jtfCedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
-        } else if (jtfCedula.getText().length() < ced) {
+        } else if (jtfCedula.getText().length() < 10) {
             JOptionPane.showMessageDialog(this, "Debe escribir un numero de cédula valido (10 dígitos)", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
 

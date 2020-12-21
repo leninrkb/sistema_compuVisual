@@ -215,7 +215,7 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
                 jComboBox1_estadoCivil.addItem(rs.getString(2));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"ERROR: "+ ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -231,7 +231,7 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
                 jPanel1.setLayout(new BorderLayout());
                 jPanel1.add(v);
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, "error :(");
+            JOptionPane.showMessageDialog(this,"ERROR: "+ ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

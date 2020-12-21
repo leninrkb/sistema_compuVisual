@@ -13,8 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-//xdxd
-//wewewewe
 public class LoginCRUD extends javax.swing.JFrame {
 
     /**

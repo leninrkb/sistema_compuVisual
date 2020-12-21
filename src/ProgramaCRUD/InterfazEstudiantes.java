@@ -6,6 +6,7 @@
 package ProgramaCRUD;
 
 import ConexionCRUD.Conexion;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +38,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         LeerDatosTabla();
         Cargar_Dir_Est();
         cargarCursos();
-        
+
     }
 
     public void BloquearBotonesInicio() {
@@ -63,12 +64,12 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
     public void BloquerJtfInicio() {
         jtfApellido.setEnabled(false);
         jtfCedula.setEnabled(false);
-        jComboBox_Direccion.setEnabled(false);
+        jcbDireccion.setEnabled(false);
         jtfNombre.setEnabled(false);
         jcbECivil.setEnabled(false);
         jrbMasculino.setEnabled(false);
         jrbFemenino.setEnabled(false);
-        jComboBox1_curso.setEnabled(false);
+        jcbCurso.setEnabled(false);
     }
 
     public void BloquearBotonesNuevo() {
@@ -87,30 +88,29 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jbEliminar.setEnabled(true);
         jbGuardar.setEnabled(true);
         jbSalir.setEnabled(false);
-        
 
     }
 
     public void DesBloquerJtfInicio() {
         jtfApellido.setEnabled(true);
         jtfCedula.setEnabled(true);
-        jComboBox_Direccion.setEnabled(true);
+        jcbDireccion.setEnabled(true);
         jtfNombre.setEnabled(true);
         jcbECivil.setEnabled(true);
         jrbMasculino.setEnabled(true);
         jrbFemenino.setEnabled(true);
-        jComboBox1_curso.setEnabled(true);
+        jcbCurso.setEnabled(true);
     }
 
-    public void DesBloquerJtfActualizar(){
+    public void DesBloquerJtfActualizar() {
         jtfCedula.setEnabled(false);
         jtfApellido.setEnabled(true);
-        jComboBox_Direccion.setEnabled(true);
+        jcbDireccion.setEnabled(true);
         jtfNombre.setEnabled(true);
         jcbECivil.setEnabled(true);
         jrbMasculino.setEnabled(true);
         jrbFemenino.setEnabled(true);
-        jComboBox1_curso.setEnabled(true);
+        jcbCurso.setEnabled(true);
     }
 
     public void LimpiarJTF() {
@@ -128,14 +128,16 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                     jtfCedula.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 0).toString());
                     jtfNombre.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 1).toString());
                     jtfApellido.setText(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 2).toString());
-                    jComboBox_Direccion.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 3).toString());
+                    jcbDireccion.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 3).toString());
                     jcbECivil.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 4).toString());
-                    jComboBox1_curso.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 6).toString());
+                    System.out.println(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 5));
                     if (jrbMasculino.getText().equals(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 5).toString())) {
                         jrbMasculino.setSelected(true);
                     } else {
                         jrbFemenino.setSelected(true);
                     }
+                    jcbCurso.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 6).toString());
+                    
                     BloquearBotonesActualizar();
                     DesBloquerJtfActualizar();
                 }
@@ -151,12 +153,12 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             java.sql.Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sqlIns);
             DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
-            jComboBox1_curso.setModel(dcbm);
+            jcbCurso.setModel(dcbm);
             while (rs.next()) {
-                jComboBox1_curso.addItem(rs.getString(2));
+                jcbCurso.addItem(rs.getString(2));
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -164,22 +166,22 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         try {
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            String sqlIns = "select * from estcivil ";
+            String sqlIns = "select nom_estcivil from estcivil ";
             java.sql.Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sqlIns);
             DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
             jcbECivil.setModel(dcbm);
             while (rs.next()) {
-                jcbECivil.addItem(rs.getString(2));
+                jcbECivil.addItem(rs.getString(1));
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void Cargar_Dir_Est() {
         try {
-            jComboBox_Direccion.removeAllItems();
+            jcbDireccion.removeAllItems();
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
             String sql = " ";
@@ -188,10 +190,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             ResultSet rs = psd.executeQuery(sql);
 
             while (rs.next()) {
-                jComboBox_Direccion.addItem(rs.getString(2));
+                jcbDireccion.addItem(rs.getString(2));
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -226,9 +228,9 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         jrbMasculino = new javax.swing.JRadioButton();
         jrbFemenino = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jComboBox_Direccion = new javax.swing.JComboBox();
+        jcbDireccion = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1_curso = new javax.swing.JComboBox<>();
+        jcbCurso = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jbNuevo = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
@@ -277,16 +279,16 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Ingrese La Cédula:");
+        jLabel1.setText("Ingrese la cédula:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Ingrese El Nombre:");
+        jLabel2.setText("Ingrese el nombre:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Ingrese El Apellido:");
+        jLabel3.setText("Ingrese el apellido:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setText("Seleccione La Dirección:");
+        jLabel4.setText("Seleccione la dirección:");
 
         jtfCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +319,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("Buscar Por Cédula:");
+        jLabel5.setText("Buscar por cédula:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,10 +336,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("Seleccione El Estado Civil:");
+        jLabel6.setText("Seleccione el estado civil:");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setText("Seleccione El Sexo:");
+        jLabel7.setText("Seleccione el sexo:");
 
         jcbECivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbECivil.addActionListener(new java.awt.event.ActionListener() {
@@ -347,7 +349,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         buttonGroupSexo.add(jrbMasculino);
-        jrbMasculino.setText("MASCULINO");
+        jrbMasculino.setText("Masculino");
         jrbMasculino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMasculinoActionPerformed(evt);
@@ -355,14 +357,14 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         buttonGroupSexo.add(jrbFemenino);
-        jrbFemenino.setText("FEMENINO");
+        jrbFemenino.setText("Femenino");
 
-        jComboBox_Direccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbDireccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Seleccione el curso:");
 
-        jComboBox1_curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -386,7 +388,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -399,12 +401,12 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jComboBox1_curso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbCurso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbECivil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtfCedula, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox_Direccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jcbDireccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(105, 105, 105))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -428,14 +430,14 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbECivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1_curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -630,8 +632,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
-        int ced = 10;
-        if (jTextField1.getText().length() == ced) {
+        if (jTextField1.getText().length() == 10) {
             evt.consume();
         }
         char caracter = evt.getKeyChar();
@@ -661,9 +662,8 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     private void jtfNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombreMouseClicked
         // TODO add your handling code here:
-        int ced = 10;
-        if (jtfCedula.getText().length() < ced) {
-            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        if (jtfCedula.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "La cédula debe ser de 10 dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
         }
     }//GEN-LAST:event_jtfNombreMouseClicked
@@ -678,8 +678,6 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSexo;
-    private javax.swing.JComboBox<String> jComboBox1_curso;
-    private javax.swing.JComboBox jComboBox_Direccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -702,6 +700,8 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<String> jcbCurso;
+    private javax.swing.JComboBox jcbDireccion;
     private javax.swing.JComboBox<String> jcbECivil;
     private javax.swing.JRadioButton jrbFemenino;
     private javax.swing.JRadioButton jrbMasculino;
@@ -718,45 +718,57 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
      5.  Ejecutar Statement
      */
     private void InsertarEstudiante() {
-        int ced = 10;
         if (jtfCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Nro. De Cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese la cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
-        } else if (jtfCedula.getText().length() < ced) {
-            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else if (jtfCedula.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Debe escribir un numero de cédula valido (10 dígitos)", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
 
         } else if (jtfNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfNombre.requestFocus();
         } else if (jtfApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Apellido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese el apellido", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfApellido.requestFocus();
         } else {
             try {
 
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
-                String sqlselect = "select cur_id from curso where cur_nombre ='"+jComboBox1_curso.getSelectedItem().toString().toUpperCase()+"'";
+                String sqlselectCur = "select cur_id from curso where cur_nombre ='" + jcbCurso.getSelectedItem().toString() + "'";
                 java.sql.Statement psd1 = cn.createStatement();
-                ResultSet rs = psd1.executeQuery(sqlselect);
-                String curso ="";
+                ResultSet rs = psd1.executeQuery(sqlselectCur);
+                String curso = "";
                 while (rs.next()) {
                     curso = rs.getString(1);
+                }
+                String sqlselectDir = "select dir_id from direccion where dir_est ='" + jcbDireccion.getSelectedItem().toString() + "'";
+                java.sql.Statement psdSelectDir = cn.createStatement();
+                ResultSet rsDir = psdSelectDir.executeQuery(sqlselectDir);
+                String direccion = "";
+                while (rsDir.next()) {
+                    direccion = rsDir.getString(1);
                 }
                 String cedula = jtfCedula.getText();
                 String nombre = jtfNombre.getText().toUpperCase();
                 String apellido = jtfApellido.getText().toUpperCase();
-                String direccion = jComboBox_Direccion.getSelectedItem().toString();
-                String estcivil = jcbECivil.getSelectedItem().toString().toUpperCase();
-                
+
+                String sqlselectEstCivil = "select id_estcivil from estcivil where nom_estcivil ='" + jcbECivil.getSelectedItem().toString() + "'";
+                java.sql.Statement psdSelectEstCivil = cn.createStatement();
+                ResultSet rsEC = psdSelectEstCivil.executeQuery(sqlselectEstCivil);
+                String estcivil = "";
+                while (rsEC.next()) {
+                    estcivil = rsEC.getString(1);
+                }
+
                 String sexo;
                 if (jrbMasculino.isSelected()) {
                     sexo = jrbMasculino.getText();
                 } else {
                     sexo = jrbFemenino.getText();
                 }
-              
+
                 String sqlIns = "";
                 sqlIns = "insert into estudiantes values(?,?,?,?,?,?,?)";
                 PreparedStatement psd = cn.prepareStatement(sqlIns);
@@ -771,10 +783,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 psd.executeUpdate();
                 CargarTablaEstudiantes("");
                 LimpiarJTF();
-                JOptionPane.showMessageDialog(this, "¡ Registro Agregado Exitosamente !");
+                JOptionPane.showMessageDialog(this, "¡Registro agregado exitosamente!");
                 cn.close();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -789,38 +801,56 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
 
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            String sqlIns = "select * from estudiantes e, curso c where e.EST_CEDULA LIKE '%" + dato + "%' and c.cur_id = e.cur_id group by est_cedula";
+            String sqlIns = "select * from estudiantes e, curso c , estcivil ec, direccion d where e.EST_CEDULA LIKE '%"
+                    + dato + "%' and c.cur_id = e.cur_id and e.est_civil = ec.id_estcivil and e.est_direccion = d.dir_id group by est_cedula";
             java.sql.Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sqlIns);
             while (rs.next()) {
                 datos[0] = rs.getString("e.EST_CEDULA");
                 datos[1] = rs.getString("e.EST_NOMBRE");
                 datos[2] = rs.getString("e.EST_APELLIDO");
-                datos[3] = rs.getString("e.EST_DIRECCION");
-                datos[4] = rs.getString("e.EST_CIVIL");
+                datos[3] = rs.getString("d.dir_est");
+                datos[4] = rs.getString("ec.nom_estcivil");
                 datos[5] = rs.getString("e.EST_SEXO");
                 datos[6] = rs.getString("c.cur_nombre");
                 dtm.addRow(datos);
             }
             jTableRegistrosEstudiantes.setModel(dtm);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void ModificarEstudiantes() {
         try {
+
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            String sqlselect = "select cur_id from curso where cur_nombre ='" + jcbCurso.getSelectedItem().toString() + "'";
+            java.sql.Statement psd1 = cn.createStatement();
+            ResultSet rs = psd1.executeQuery(sqlselect);
+            String curso = "";
+            while (rs.next()) {
+                curso = rs.getString(1);
+            }
             
-             Conexion cc = new Conexion();
-                Connection cn = cc.conectar();
-                String sqlselect = "select cur_id from curso where cur_nombre ='"+jComboBox1_curso.getSelectedItem().toString().toUpperCase()+"'";
-                java.sql.Statement psd1 = cn.createStatement();
-                ResultSet rs = psd1.executeQuery(sqlselect);
-                String curso ="";
-                while (rs.next()) {
-                    curso = rs.getString(1);
-                }
-            String sqlUpd = "";
+            String sqlselectDir = "select dir_id from direccion where dir_est ='" + jcbDireccion.getSelectedItem().toString() + "'";
+            java.sql.Statement psdSelectDir = cn.createStatement();
+            ResultSet rsDir = psdSelectDir.executeQuery(sqlselectDir);
+            String direccion = "";
+            while (rsDir.next()) {
+                direccion = rsDir.getString(1);
+            }
+            System.out.println(jcbECivil.getSelectedItem().toString());
+            String sqlselectEC = "select id_estcivil from estcivil where nom_estcivil ='" + jcbECivil.getSelectedItem().toString() + "'";
+            java.sql.Statement psdSelectEC = cn.createStatement();
+            ResultSet rsEC = psdSelectEC.executeQuery(sqlselectEC);
+            String estcivil = "";
+            while (rsEC.next()) {
+                estcivil = rsEC.getString(1);
+            }
+            
+            
             String sexo;
             if (jrbMasculino.isSelected()) {
                 sexo = jrbMasculino.getText();
@@ -828,10 +858,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 sexo = jrbFemenino.getText();
             }
             System.out.println(curso);
-            sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText().toUpperCase()
-                    + "', EST_NOMBRE='" + jtfNombre.getText().toUpperCase()
-                    + "', EST_DIRECCION='" + jComboBox_Direccion.getSelectedItem()
-                    + "', EST_CIVIL='" + jcbECivil.getSelectedItem().toString().toUpperCase()
+            String sqlUpd = "";sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText()
+                    + "', EST_NOMBRE='" + jtfNombre.getText()
+                    + "', EST_DIRECCION='" + direccion
+                    + "', EST_CIVIL='" + estcivil
                     + "', EST_SEXO='" + sexo
                     + "', cur_id='" + curso
                     + "' WHERE EST_CEDULA='" + jtfCedula.getText() + "';";
@@ -842,11 +872,11 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             BloquerJtfInicio();
             LimpiarJTF();
             if (n > 0) {
-                JOptionPane.showMessageDialog(this, "¡ Datos Actualizados Correctamente !");
+                JOptionPane.showMessageDialog(this, "¡Datos actualizados satisfactoriamente!");
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -866,16 +896,14 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 int n = psd.executeUpdate();
                 CargarTablaEstudiantes("");
                 if (n > 0) {
-                    JOptionPane.showMessageDialog(this, "¡ Estudiante Eliminado Exitosamente !");
+                    JOptionPane.showMessageDialog(this, "¡Registro eliminado exitosamente!");
                 }
                 BloquearBotonesInicio();
                 BloquerJtfInicio();
                 LimpiarJTF();
             }
-
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 }

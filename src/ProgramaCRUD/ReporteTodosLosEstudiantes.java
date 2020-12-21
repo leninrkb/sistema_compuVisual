@@ -35,8 +35,7 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
      */
     public ReporteTodosLosEstudiantes() {
         initComponents();
-        
-       
+        reportar();       
     }
     Conexion c = new Conexion();
     Connection cn = c.conectar();
@@ -53,7 +52,6 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
-        jButton1_reportar = new javax.swing.JButton();
         jButton1_cerrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
@@ -89,16 +87,10 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         setResizable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("Reportar todos los estudiantes");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Reporte de todos los estudiantes. ");
 
-        jButton1_reportar.setText("reportar");
-        jButton1_reportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1_reportarActionPerformed(evt);
-            }
-        });
-
-        jButton1_cerrar.setText("cerrar");
+        jButton1_cerrar.setText("CERRAR");
         jButton1_cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1_cerrarActionPerformed(evt);
@@ -120,29 +112,24 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1_cerrar))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1_reportar))
-                .addGap(754, 754, 754))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 553, Short.MAX_VALUE)
+                        .addComponent(jButton1_cerrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1_cerrar)
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1_reportar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1_cerrar)
+                    .addComponent(jLabel1))
+                .addGap(92, 92, 92)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -155,49 +142,14 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         setVisible(false);
     }//GEN-LAST:event_jButton1_cerrarActionPerformed
 
-    private void jButton1_reportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_reportarActionPerformed
-        reportar();
-    }//GEN-LAST:event_jButton1_reportarActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReporteTodosLosEstudiantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReporteTodosLosEstudiantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReporteTodosLosEstudiantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReporteTodosLosEstudiantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ReporteTodosLosEstudiantes().setVisible(true);
-            }
-        });
-    }
+    
 
     private void reportar() {
             try {
-                JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reporteTodosLosEstudiantes.jrxml");
+                JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reporteTodosLosEstudiantes.jrxml");
                 JasperPrint print;
                 print = JasperFillManager.fillReport(reporte, null, cn);
                 //JasperViewer.viewReport(print,false);
@@ -206,14 +158,13 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
                 jPanel1.add(v);
                 
             } catch (JRException ex) {
-                JOptionPane.showMessageDialog(null, "error :(");
+            JOptionPane.showMessageDialog(this, "ERROR: " + ex, "ERROR ", JOptionPane.ERROR_MESSAGE);
             }
 
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1_cerrar;
-    private javax.swing.JButton jButton1_reportar;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;

@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/stee-/OneDrive/UTA/Semestre%204/Computación%20Visual/ProyectosNetBeans/CRUDenGIT/sistema_compuVisual/src/ProgramaCRUD/InterfazEstudiantes.java</file>
             <file>file:/C:/Users/stee-/OneDrive/UTA/Semestre%204/Computación%20Visual/ProyectosNetBeans/CRUDenGIT/sistema_compuVisual/src/ProgramaCRUD/ReporteTodosLosEstudiantes.java</file>
@@ -15,5 +16,12 @@
             <file>file:/C:/Users/stee-/OneDrive/UTA/Semestre%204/Computación%20Visual/ProyectosNetBeans/CRUDenGIT/sistema_compuVisual/src/ProgramaCRUD/VentanaPrincipal.java</file>
             <file>file:/C:/Users/stee-/OneDrive/UTA/Semestre%204/Computación%20Visual/ProyectosNetBeans/CRUDenGIT/sistema_compuVisual/src/ProgramaCRUD/InterfazCursos.java</file>
         </group>
+=======
+
+        <group>
+            <file>file:/D:/Documents/Codigos/NetBeansProjects/CRUD/src/ProgramaCRUD/InterfazEstudiantes.java</file>
+        </group>
+
+>>>>>>> lenin
     </open-files>
 </project-private>

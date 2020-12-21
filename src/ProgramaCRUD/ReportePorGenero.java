@@ -90,11 +90,14 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("repote por genero");
+        setTitle("Reporte por género");
+        setToolTipText("");
+
 
         jLabel1.setText("Genero:  ");
 
         jButton1_reportar.setText("Generar Reporte");
+
         jButton1_reportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1_reportarActionPerformed(evt);
@@ -116,7 +119,7 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,8 +136,10 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
                         .addComponent(jComboBox1_genero, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1_reportar)
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 563, Short.MAX_VALUE)
                         .addComponent(jButton1_cerrar)))
+
                 .addContainerGap())
         );
         layout.setVerticalGroup(

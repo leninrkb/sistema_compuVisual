@@ -71,7 +71,7 @@ where cur_id = $P{curso};]]>
 	<summary>
 		<band height="134" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="0" width="217" height="134" uuid="62212566-2055-4779-afdc-91f4693ed4e2"/>
+				<reportElement x="0" y="0" width="555" height="134" uuid="62212566-2055-4779-afdc-91f4693ed4e2"/>
 				<subreportParameter name="curso">
 					<subreportParameterExpression><![CDATA[$P{curso}]]></subreportParameterExpression>
 				</subreportParameter>

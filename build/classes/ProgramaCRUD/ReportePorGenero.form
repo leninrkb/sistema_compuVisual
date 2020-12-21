@@ -69,16 +69,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton1_cerrar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox1_genero" min="-2" pref="88" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton1_reportar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="487" max="32767" attributes="0"/>
+                      <EmptySpace pref="563" max="32767" attributes="0"/>
+                      <Component id="jButton1_cerrar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -89,14 +86,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1_cerrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1_reportar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1_genero" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton1_cerrar" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox1_genero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1_reportar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -106,12 +104,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="seleccione el genero a reportar"/>
+        <Property name="text" type="java.lang.String" value="Genero:  "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1_reportar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="reportar"/>
+        <Property name="text" type="java.lang.String" value="Generar Reporte"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_reportarActionPerformed"/>
@@ -119,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1_cerrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="cerrar"/>
+        <Property name="text" type="java.lang.String" value="CERRAR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_cerrarActionPerformed"/>

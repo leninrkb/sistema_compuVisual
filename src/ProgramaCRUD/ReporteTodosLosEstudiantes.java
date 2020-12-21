@@ -88,7 +88,7 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Reportar todos los estudiantes");
+        jLabel1.setText("Reporte de todos los estudiantes. ");
 
         jButton1_cerrar.setText("CERRAR");
         jButton1_cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,9 +116,8 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 304, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(280, 280, 280)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 553, Short.MAX_VALUE)
                         .addComponent(jButton1_cerrar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -127,7 +126,7 @@ public class ReporteTodosLosEstudiantes extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1_cerrar)
                     .addComponent(jLabel1))
                 .addGap(92, 92, 92)

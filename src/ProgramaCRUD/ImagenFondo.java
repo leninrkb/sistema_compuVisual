@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.border.Border;
@@ -25,9 +26,8 @@ public class ImagenFondo implements Border{
 
     public ImagenFondo() {
         try{
-            URL imagePath = new URL(getClass().getResource("fondo.png").toString());
-            back = ImageIO.read(imagePath);
-        } catch (Exception ex){
+            back = ImageIO.read(new URL(getClass().getResource("fondo.png").toString()));
+        } catch (IOException ex){
         
         }
     }

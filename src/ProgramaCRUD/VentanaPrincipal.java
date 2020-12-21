@@ -27,7 +27,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         CambioPorTipoUser(tipouser);
         AgregarVentanas();
         setExtendedState(MAXIMIZED_BOTH); 
-        this.setTitle("UTA");
         
     }
 
@@ -45,10 +44,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVentanas = new javax.swing.JMenu();
-        jMenuItemUsuarios = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItemCursos = new javax.swing.JMenuItem();
         jMenuItemEstudiantes = new javax.swing.JMenuItem();
+        jMenuItemCursos = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemUsuarios = new javax.swing.JMenuItem();
         jMenuReportes = new javax.swing.JMenu();
         repote_porTodosEstudiantes = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -61,6 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemCerrarPrograma = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ventana principal - Registro estudiantes");
 
         jInternalFrame1.setVisible(false);
 
@@ -105,41 +105,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuVentanas.setText("Ventanas");
         jMenuVentanas.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
-        jMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemUsuarios.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jMenuItemUsuarios.setText("Usuarios");
-        jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuariosActionPerformed(evt);
-            }
-        });
-        jMenuItemUsuarios.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jMenuItemUsuariosKeyPressed(evt);
-            }
-        });
-        jMenuVentanas.add(jMenuItemUsuarios);
-        jMenuVentanas.add(jSeparator2);
-
-        jMenuItemCursos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemCursos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jMenuItemCursos.setText("Cursos");
-        jMenuItemCursos.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
-            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
-                jMenuItemCursosMenuKeyPressed(evt);
-            }
-            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
-            }
-            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
-            }
-        });
-        jMenuItemCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCursosActionPerformed(evt);
-            }
-        });
-        jMenuVentanas.add(jMenuItemCursos);
-
         jMenuItemEstudiantes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemEstudiantes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jMenuItemEstudiantes.setText("Estudiantes");
@@ -159,6 +124,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenuVentanas.add(jMenuItemEstudiantes);
 
+        jMenuItemCursos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCursos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jMenuItemCursos.setText("Cursos");
+        jMenuItemCursos.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
+            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
+                jMenuItemCursosMenuKeyPressed(evt);
+            }
+            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
+            }
+            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
+            }
+        });
+        jMenuItemCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCursosActionPerformed(evt);
+            }
+        });
+        jMenuVentanas.add(jMenuItemCursos);
+        jMenuVentanas.add(jSeparator2);
+
+        jMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemUsuarios.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jMenuItemUsuarios.setText("Usuarios");
+        jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuariosActionPerformed(evt);
+            }
+        });
+        jMenuItemUsuarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItemUsuariosKeyPressed(evt);
+            }
+        });
+        jMenuVentanas.add(jMenuItemUsuarios);
+
         jMenuBar1.add(jMenuVentanas);
 
         jMenuReportes.setText("Reportes");
@@ -177,7 +177,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         reporte_porGenero.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_MASK));
         reporte_porGenero.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        reporte_porGenero.setText("Estudiantes por Genero");
+        reporte_porGenero.setText("Estudiantes por genero");
         reporte_porGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporte_porGeneroActionPerformed(evt);
@@ -187,7 +187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         reporte_porEstadoCivil.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         reporte_porEstadoCivil.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        reporte_porEstadoCivil.setText("Estudiantes por Estado Civil");
+        reporte_porEstadoCivil.setText("Estudiantes por estado civil");
         reporte_porEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporte_porEstadoCivilActionPerformed(evt);
@@ -197,7 +197,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         reporte_porCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         reporte_porCurso.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        reporte_porCurso.setText("Estudiantes por Curso");
+        reporte_porCurso.setText("Estudiantes por curso");
         reporte_porCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporte_porCursoActionPerformed(evt);
@@ -405,7 +405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarReporteTodosLosEstudiantes() {
         if (!rpte.isVisible()) {
-            rpte.setSize(jdpVentanaPrincipal.getWidth()-100,jdpVentanaPrincipal.getHeight()-100);
+            rpte.setSize(jdpVentanaPrincipal.getWidth()-200,jdpVentanaPrincipal.getHeight()-100);
             rpte.setLocation((jdpVentanaPrincipal.getWidth() - rpte.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - rpte.getHeight()) / 2);
             rpte.setVisible(true);
@@ -418,6 +418,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarReportePorEstadoCivil() {
         if (!rpec.isVisible()) {
+            rpec.setSize(jdpVentanaPrincipal.getWidth()-200,jdpVentanaPrincipal.getHeight()-100);
             rpec.setLocation((jdpVentanaPrincipal.getWidth() - rpec.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - rpec.getHeight()) / 2);
             rpec.setVisible(true);
@@ -430,6 +431,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarReportePorGenero() {
         if (!rpg.isVisible()) {
+            rpg.setSize(jdpVentanaPrincipal.getWidth()-200,jdpVentanaPrincipal.getHeight()-100);
             rpg.setLocation((jdpVentanaPrincipal.getWidth() - rpg.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - rpg.getHeight()) / 2);
             rpg.setVisible(true);
@@ -443,6 +445,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarReportePorCurso() {
         if (!rpc.isVisible()) {
+            rpc.setSize(jdpVentanaPrincipal.getWidth()-200,jdpVentanaPrincipal.getHeight()-100);
             rpc.setLocation((jdpVentanaPrincipal.getWidth() - rpc.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - rpc.getHeight()) / 2);
             rpc.setVisible(true);

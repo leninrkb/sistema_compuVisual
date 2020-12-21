@@ -137,7 +137,6 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                         jrbFemenino.setSelected(true);
                     }
                     jcbCurso.setSelectedItem(jTableRegistrosEstudiantes.getValueAt(jTableRegistrosEstudiantes.getSelectedRow(), 6).toString());
-                    
                     BloquearBotonesActualizar();
                     DesBloquerJtfActualizar();
                 }
@@ -188,7 +187,6 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             sql = "select * from direccion";
             Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sql);
-
             while (rs.next()) {
                 jcbDireccion.addItem(rs.getString(2));
             }
@@ -833,7 +831,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 curso = rs.getString(1);
             }
-            
+
             String sqlselectDir = "select dir_id from direccion where dir_est ='" + jcbDireccion.getSelectedItem().toString() + "'";
             java.sql.Statement psdSelectDir = cn.createStatement();
             ResultSet rsDir = psdSelectDir.executeQuery(sqlselectDir);
@@ -849,8 +847,6 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
             while (rsEC.next()) {
                 estcivil = rsEC.getString(1);
             }
-            
-            
             String sexo;
             if (jrbMasculino.isSelected()) {
                 sexo = jrbMasculino.getText();
@@ -858,7 +854,8 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 sexo = jrbFemenino.getText();
             }
             System.out.println(curso);
-            String sqlUpd = "";sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText()
+            String sqlUpd = "";
+            sqlUpd = "UPDATE ESTUDIANTES SET EST_APELLIDO='" + jtfApellido.getText()
                     + "', EST_NOMBRE='" + jtfNombre.getText()
                     + "', EST_DIRECCION='" + direccion
                     + "', EST_CIVIL='" + estcivil

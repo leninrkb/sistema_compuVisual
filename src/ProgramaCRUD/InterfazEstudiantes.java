@@ -663,7 +663,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int ced = 10;
         if (jtfCedula.getText().length() < ced) {
-            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula debe ser de 10 dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
         }
     }//GEN-LAST:event_jtfNombreMouseClicked

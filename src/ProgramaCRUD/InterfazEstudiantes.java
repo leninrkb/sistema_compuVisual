@@ -278,16 +278,16 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Ingrese La Cédula:");
+        jLabel1.setText("Ingrese la cédula:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Ingrese El Nombre:");
+        jLabel2.setText("Ingrese el nombre:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Ingrese El Apellido:");
+        jLabel3.setText("Ingrese el apellido:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setText("Seleccione La Dirección:");
+        jLabel4.setText("Seleccione la dirección:");
 
         jtfCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +318,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("Buscar Por Cédula:");
+        jLabel5.setText("Buscar por cédula:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,10 +335,10 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("Seleccione El Estado Civil:");
+        jLabel6.setText("Seleccione el estado civil:");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setText("Seleccione El Sexo:");
+        jLabel7.setText("Seleccione el sexo:");
 
         jcbECivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbECivil.addActionListener(new java.awt.event.ActionListener() {
@@ -387,7 +387,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -721,17 +721,17 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
     private void InsertarEstudiante() {
         int ced = 10;
         if (jtfCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Nro. De Cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese la cédula", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
         } else if (jtfCedula.getText().length() < ced) {
-            JOptionPane.showMessageDialog(this, "La Cédula Debe Tener 10 Dígitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe escribir un numero de cédula valido (10 dígitos)", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfCedula.requestFocus();
 
         } else if (jtfNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfNombre.requestFocus();
         } else if (jtfApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese El Apellido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese el apellido", "Advertencia", JOptionPane.WARNING_MESSAGE);
             jtfApellido.requestFocus();
         } else {
             try {
@@ -785,7 +785,7 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 psd.executeUpdate();
                 CargarTablaEstudiantes("");
                 LimpiarJTF();
-                JOptionPane.showMessageDialog(this, "¡ Registro Agregado Exitosamente !");
+                JOptionPane.showMessageDialog(this, "¡Registro agregado exitosamente!");
                 cn.close();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "ERROR: " + ex, title, JOptionPane.ERROR_MESSAGE);

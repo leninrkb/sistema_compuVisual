@@ -405,6 +405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarReporteTodosLosEstudiantes() {
         if (!rpte.isVisible()) {
+            rpte.setSize(jdpVentanaPrincipal.getWidth()-100,jdpVentanaPrincipal.getHeight()-100);
             rpte.setLocation((jdpVentanaPrincipal.getWidth() - rpte.getWidth()) / 2,
                     (jdpVentanaPrincipal.getHeight() - rpte.getHeight()) / 2);
             rpte.setVisible(true);

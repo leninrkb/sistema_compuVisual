@@ -3,30 +3,32 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
      estudiantes.`EST_CEDULA` AS estudiantes_EST_CEDULA,
      estudiantes.`EST_NOMBRE` AS estudiantes_EST_NOMBRE,
      estudiantes.`EST_APELLIDO` AS estudiantes_EST_APELLIDO,
-     estudiantes.`EST_DIRECCION` AS estudiantes_EST_DIRECCION,
+     direccion.`dir_est` AS EST_DIRECCION,
      estudiantes.`EST_CIVIL` AS estudiantes_EST_CIVIL,
-     estudiantes.`EST_SEXO` AS estudiantes_EST_SEXO,
-     estudiantes.`cur_id` AS estudiantes_cur_id
+     estudiantes.`EST_SEXO` AS estudiantes_EST_SEXO
+
 FROM
-     `estudiantes` estudiantes]]>
+     `estudiantes` estudiantes,
+	`direccion` direccion
+where 
+	direccion.`dir_id`=estudiantes.`est_direccion`]]>
 	</queryString>
 	<field name="estudiantes_EST_CEDULA" class="java.lang.String"/>
 	<field name="estudiantes_EST_NOMBRE" class="java.lang.String"/>
 	<field name="estudiantes_EST_APELLIDO" class="java.lang.String"/>
-	<field name="estudiantes_EST_DIRECCION" class="java.lang.String"/>
-	<field name="estudiantes_EST_CIVIL" class="java.lang.String"/>
+	<field name="EST_DIRECCION" class="java.lang.String"/>
+	<field name="estudiantes_EST_CIVIL" class="java.lang.Integer"/>
 	<field name="estudiantes_EST_SEXO" class="java.lang.String"/>
-	<field name="estudiantes_cur_id" class="java.lang.Integer"/>
 	<variable name="estudiantes_EST_CEDULA_1" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[$F{estudiantes_EST_CEDULA}]]></variableExpression>
 	</variable>
 	<variable name="estudiantes_cur_id_1" class="java.lang.Integer" calculation="Count">
-		<variableExpression><![CDATA[$F{estudiantes_cur_id}]]></variableExpression>
+		<variableExpression><![CDATA[]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -92,12 +94,12 @@ FROM
 				<textFieldExpression><![CDATA[$F{estudiantes_EST_APELLIDO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="371" y="2" width="100" height="20" uuid="3eb426fb-004f-420a-9c80-158ce2e1639c"/>
-				<textFieldExpression><![CDATA[$F{estudiantes_EST_DIRECCION}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="494" y="2" width="100" height="20" uuid="f24c148b-3a41-4476-8bd3-9c2aab119e7d"/>
 				<textFieldExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="2" width="100" height="20" uuid="5204a2c2-ff3e-4b94-902e-21cf78aa3750"/>
+				<textFieldExpression><![CDATA[$F{EST_DIRECCION}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -111,17 +113,9 @@ FROM
 				<reportElement x="1" y="22" width="100" height="20" uuid="7676802d-c05c-453d-a48f-3f677a36531d"/>
 				<text><![CDATA[# estudiantes: ]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="103" y="42" width="100" height="20" uuid="2ced3795-c069-4b93-8876-830c790f3eac"/>
-				<textFieldExpression><![CDATA[$V{estudiantes_cur_id_1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="1" y="42" width="100" height="20" uuid="31771961-3375-4843-b850-58c0eb512def"/>
-				<text><![CDATA[# cursos: ]]></text>
-			</staticText>
 			<barChart>
 				<chart>
-					<reportElement x="347" y="156" width="200" height="100" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
+					<reportElement x="203" y="74" width="344" height="182" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

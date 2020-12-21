@@ -28,8 +28,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(VentanaPrincipal.MAXIMIZED_BOTH); 
         CambioPorTipoUser(tipouser);
         AgregarVentanas();
-        setExtendedState(MAXIMIZED_BOTH); 
-        
+        setExtendedState(MAXIMIZED_BOTH);        
     }
 
     /**

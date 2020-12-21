@@ -11,10 +11,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author stee-
- */
 public class Conexion {
     Connection connect = null;
     public Connection conectar(){

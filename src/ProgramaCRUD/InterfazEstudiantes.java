@@ -902,7 +902,6 @@ public final class InterfazEstudiantes extends javax.swing.JInternalFrame {
                 BloquerJtfInicio();
                 LimpiarJTF();
             }
-
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "ERROR: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
         }

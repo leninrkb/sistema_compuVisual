@@ -17,11 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- *
- * @author stee-
- */
+
 public class LoginCRUD extends javax.swing.JFrame {
 
     /**
@@ -55,7 +51,7 @@ public class LoginCRUD extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Usuario: ");
+        jLabel1.setText("Cédula de usuario: ");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -111,6 +107,7 @@ public class LoginCRUD extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                             .addComponent(jLabelInicioImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelInicioSesion)
                             .addComponent(jtfUsuarioLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,6 +122,7 @@ public class LoginCRUD extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))))
                 .addContainerGap(80, Short.MAX_VALUE))
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +130,7 @@ public class LoginCRUD extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelInicioSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
                 .addComponent(jLabelInicioImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
@@ -146,6 +145,7 @@ public class LoginCRUD extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jbSalir)
                 .addContainerGap())
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

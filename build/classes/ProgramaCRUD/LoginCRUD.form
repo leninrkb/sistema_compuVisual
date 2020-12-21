@@ -70,6 +70,7 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+
                   </Group>
                   <EmptySpace pref="80" max="32767" attributes="0"/>
               </Group>
@@ -81,6 +82,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabelInicioSesion" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+
                   <Component id="jLabelInicioImage" min="-2" pref="200" max="-2" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -95,6 +97,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
+
               </Group>
           </Group>
         </DimensionLayout>
@@ -106,7 +109,7 @@
               <Font name="Arial" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Usuario: "/>
+            <Property name="text" type="java.lang.String" value="C&#xe9;dula de usuario: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

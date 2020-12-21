@@ -51,10 +51,6 @@ where cur_id = $P{curso};]]>
 				<reportElement x="237" y="1" width="100" height="20" uuid="7853eda0-6d3c-45ac-8f56-74463c930a8e"/>
 				<text><![CDATA[APELLIDO]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="353" y="1" width="100" height="20" uuid="75e1f135-7ed5-4955-98a3-6466f444d6f0"/>
-				<text><![CDATA[CURSO]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -70,10 +66,6 @@ where cur_id = $P{curso};]]>
 			<textField>
 				<reportElement x="237" y="0" width="100" height="20" uuid="ffd83022-59a3-4474-9a1b-cb8fd72801fc"/>
 				<textFieldExpression><![CDATA[$F{estudiantes_EST_APELLIDO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="353" y="0" width="100" height="20" uuid="1fa1404d-f780-4693-9335-cdde8d13d6e1"/>
-				<textFieldExpression><![CDATA[$F{cur_id}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

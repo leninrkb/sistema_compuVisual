@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -86,18 +87,15 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
             .addGap(0, 154, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Reporte por género");
         setToolTipText("");
 
-
         jLabel1.setText("Genero:  ");
 
         jButton1_reportar.setText("Generar Reporte");
-
         jButton1_reportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1_reportarActionPerformed(evt);
@@ -119,7 +117,7 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 161, Short.MAX_VALUE)
+            .addGap(0, 165, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,10 +134,8 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
                         .addComponent(jComboBox1_genero, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1_reportar)
-
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 563, Short.MAX_VALUE)
                         .addComponent(jButton1_cerrar)))
-
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,11 +157,13 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_cerrarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:  
         setVisible(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);      
     }//GEN-LAST:event_jButton1_cerrarActionPerformed
 
     private void jButton1_reportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_reportarActionPerformed
+
         reporteGenero();
     }//GEN-LAST:event_jButton1_reportarActionPerformed
 
@@ -204,29 +202,33 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
             }
         });
     }
-    
-    private void cargarGeneros(){
-        String [] datos = {"Femenino","Masculino"};
+    /* se supone que era un metodo para actuaizar la pantalla, pero ya no hizo falta xd
+    void actualizarPantalla() {
+        SwingUtilities.updateComponentTreeUI(this);
+        this.validateTree();
+    }*/
+
+    private void cargarGeneros() {
+        String[] datos = {"Femenino", "Masculino"};
         dcbm.addElement(datos[0]);
         dcbm.addElement(datos[1]);
         jComboBox1_genero.setModel(dcbm);
     }
-    
+
     private void reporteGenero() {
         Map parametros = new HashMap();
         parametros.put("genero", jComboBox1_genero.getSelectedItem().toString());
-            try {
-                JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reportePorGenero.jrxml");
-                JasperPrint print;
-                print = JasperFillManager.fillReport(reporte, parametros, cn);
-                //JasperViewer.viewReport(print,false);
-                JRViewer v = new JRViewer(print);
-                jPanel1.setLayout(new BorderLayout());
-                jPanel1.add(v);
-            } catch (JRException ex) {
-                JOptionPane.showMessageDialog(null, "error :(");
-            }
-
+        try {
+            JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reportePorGenero.jrxml");
+            JasperPrint print;
+            print = JasperFillManager.fillReport(reporte, parametros, cn);
+            //JasperViewer.viewReport(print,false);
+            JRViewer v = new JRViewer(print);
+            jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(v);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, "error :(");
+        }
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

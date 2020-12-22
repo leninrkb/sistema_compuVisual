@@ -229,7 +229,7 @@ public class ReportePorCurso extends javax.swing.JInternalFrame {
                 jPanel1.setLayout(new BorderLayout());
                 jPanel1.add(v);
             } catch (JRException ex) {
-                JOptionPane.showMessageDialog(null, "error :(");
+                JOptionPane.showMessageDialog(this,"ERROR: "+ ex, title, JOptionPane.ERROR_MESSAGE);
             }
 
 

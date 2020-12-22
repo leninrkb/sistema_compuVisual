@@ -18,6 +18,7 @@ FROM
 	`curso` curso,
 	`direccion` direccion
 where estcivil.`nom_estcivil` = $P{est_civ}
+and estcivil.`id_estcivil`=estudiantes.`est_civil`
 and curso.cur_id=estudiantes.cur_id
 and direccion.dir_id=estudiantes.est_direccion]]>
 	</queryString>

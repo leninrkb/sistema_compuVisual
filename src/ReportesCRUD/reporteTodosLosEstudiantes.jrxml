@@ -18,7 +18,8 @@ FROM
 	`estcivil` estcivil
 where 
 	direccion.`dir_id`=estudiantes.`est_direccion`
-	and estcivil.`id_estcivil`=estudiantes.`est_civil`]]>
+	and estcivil.`id_estcivil`=estudiantes.`est_civil`
+	]]>
 	</queryString>
 	<field name="estudiantes_EST_CEDULA" class="java.lang.String"/>
 	<field name="estudiantes_EST_NOMBRE" class="java.lang.String"/>
@@ -106,7 +107,7 @@ where
 		</band>
 	</detail>
 	<summary>
-		<band height="505" splitType="Stretch">
+		<band height="555" splitType="Stretch">
 			<textField>
 				<reportElement x="103" y="22" width="100" height="20" uuid="7e4a4683-3a2f-4eae-aac8-3d74bba97205"/>
 				<textFieldExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></textFieldExpression>
@@ -117,7 +118,7 @@ where
 			</staticText>
 			<barChart>
 				<chart>
-					<reportElement x="41" y="74" width="344" height="182" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
+					<reportElement x="0" y="290" width="802" height="265" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -125,8 +126,8 @@ where
 				<categoryDataset>
 					<categorySeries>
 						<seriesExpression><![CDATA["estudiantes"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></categoryExpression>
-						<valueExpression><![CDATA[$V{COLUMN_COUNT}]]></valueExpression>
+						<categoryExpression><![CDATA[$F{EST_DIRECCION}]]></categoryExpression>
+						<valueExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
@@ -142,7 +143,7 @@ where
 			</barChart>
 			<pieChart>
 				<chart>
-					<reportElement x="453" y="74" width="325" height="182" uuid="b0f02e90-09d0-496b-a986-e2c629b0d255"/>
+					<reportElement x="1" y="61" width="405" height="229" uuid="b0f02e90-09d0-496b-a986-e2c629b0d255"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -158,7 +159,7 @@ where
 			</pieChart>
 			<pieChart>
 				<chart>
-					<reportElement x="249" y="304" width="305" height="201" uuid="d449a5e2-817a-40d9-a1dc-06c11f200478"/>
+					<reportElement x="432" y="61" width="370" height="229" uuid="d449a5e2-817a-40d9-a1dc-06c11f200478"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

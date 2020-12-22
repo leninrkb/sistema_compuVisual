@@ -575,13 +575,13 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
             try {
 
                 String idCurso = jtfIDCurso.getText();
-                String nombre = jtfNombre.getText().toString().toUpperCase();
+                String nombre = jtfNombre.getText().toString();
                 String nivel = jtfNivel.getText();
                 String observacion;
                 if (jtfObservacion.getText().isEmpty()) {
                     observacion = "Sin observación".toUpperCase();
                 } else {
-                    observacion = jtfObservacion.getText().toString().toUpperCase();
+                    observacion = jtfObservacion.getText().toString();
                 }
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
@@ -637,8 +637,8 @@ public class InterfazCursos extends javax.swing.JInternalFrame {
             Connection cn = cc.conectar();
             String sqlUpd = "";
             sqlUpd = "UPDATE curso SET cur_nivel='" + jtfNivel.getText()
-                    + "', cur_nombre='" + jtfNombre.getText().toString().toUpperCase()
-                    + "', cur_obs='" + jtfObservacion.getText().toString().toUpperCase()
+                    + "', cur_nombre='" + jtfNombre.getText().toString()
+                    + "', cur_obs='" + jtfObservacion.getText().toString()
                     + "' WHERE cur_id='" + jtfIDCurso.getText() + "';";
             PreparedStatement psd = cn.prepareStatement(sqlUpd);
             int n = psd.executeUpdate();

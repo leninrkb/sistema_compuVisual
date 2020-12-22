@@ -210,7 +210,7 @@ public class ReportePorCurso extends javax.swing.JInternalFrame {
             DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
             jComboBox1_curso.setModel(dcbm);
             while (rs.next()) {
-                jComboBox1_curso.addItem(rs.getString(1));
+                jComboBox1_curso.addItem(rs.getString(2));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex, title, JOptionPane.ERROR_MESSAGE);
@@ -221,7 +221,7 @@ public class ReportePorCurso extends javax.swing.JInternalFrame {
         Map parametros = new HashMap();
         parametros.put("curso", jComboBox1_curso.getSelectedItem().toString());
             try {
-                JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reportePorCurso.jrxml");
+                JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reportePorCurso.jrxml");
                 JasperPrint print;
                 print = JasperFillManager.fillReport(reporte, parametros, cn);
                 //JasperViewer.viewReport(print,false);

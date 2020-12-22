@@ -106,7 +106,7 @@ where
 		</band>
 	</detail>
 	<summary>
-		<band height="256" splitType="Stretch">
+		<band height="505" splitType="Stretch">
 			<textField>
 				<reportElement x="103" y="22" width="100" height="20" uuid="7e4a4683-3a2f-4eae-aac8-3d74bba97205"/>
 				<textFieldExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></textFieldExpression>
@@ -117,7 +117,7 @@ where
 			</staticText>
 			<barChart>
 				<chart>
-					<reportElement x="203" y="74" width="344" height="182" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
+					<reportElement x="41" y="74" width="344" height="182" uuid="bdcc62b0-e49d-4361-82fd-1794f2720be0"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -140,6 +140,38 @@ where
 					</valueAxisFormat>
 				</barPlot>
 			</barChart>
+			<pieChart>
+				<chart>
+					<reportElement x="453" y="74" width="325" height="182" uuid="b0f02e90-09d0-496b-a986-e2c629b0d255"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{estudiantes_EST_SEXO}]]></keyExpression>
+					<valueExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pieChart>
+				<chart>
+					<reportElement x="249" y="304" width="305" height="201" uuid="d449a5e2-817a-40d9-a1dc-06c11f200478"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{estudiantes_EST_CIVIL}]]></keyExpression>
+					<valueExpression><![CDATA[$V{estudiantes_EST_CEDULA_1}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
 		</band>
 	</summary>
 </jasperReport>

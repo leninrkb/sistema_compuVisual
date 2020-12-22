@@ -9,19 +9,24 @@
      estudiantes.`EST_CEDULA` AS estudiantes_EST_CEDULA,
      estudiantes.`EST_NOMBRE` AS estudiantes_EST_NOMBRE,
      estudiantes.`EST_APELLIDO` AS estudiantes_EST_APELLIDO,
-     estudiantes.`EST_DIRECCION` AS estudiantes_EST_DIRECCION,
+     direccion.`dir_est` AS estudiantes_EST_DIRECCION,
      estudiantes.`EST_SEXO` AS estudiantes_EST_SEXO,
-     estudiantes.`cur_id` AS estudiantes_cur_id
+     curso.`cur_nombre` AS estudiantes_cur_id
 FROM
-     `estudiantes` estudiantes
-where est_civil = $P{est_civ};]]>
+     `estudiantes` estudiantes,
+	`estcivil` estcivil,
+	`curso` curso,
+	`direccion` direccion
+where estcivil.`nom_estcivil` = $P{est_civ}
+and curso.cur_id=estudiantes.cur_id
+and direccion.dir_id=estudiantes.est_direccion]]>
 	</queryString>
 	<field name="estudiantes_EST_CEDULA" class="java.lang.String"/>
 	<field name="estudiantes_EST_NOMBRE" class="java.lang.String"/>
 	<field name="estudiantes_EST_APELLIDO" class="java.lang.String"/>
 	<field name="estudiantes_EST_DIRECCION" class="java.lang.String"/>
 	<field name="estudiantes_EST_SEXO" class="java.lang.String"/>
-	<field name="estudiantes_cur_id" class="java.lang.Integer"/>
+	<field name="estudiantes_cur_id" class="java.lang.String"/>
 	<variable name="estudiantes_EST_CEDULA_1" class="java.lang.Integer" resetType="Page" calculation="Count">
 		<variableExpression><![CDATA[$F{estudiantes_EST_CEDULA}]]></variableExpression>
 	</variable>

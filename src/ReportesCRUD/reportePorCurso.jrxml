@@ -14,7 +14,7 @@
      curso.`cur_nivel` AS curso_cur_nivel
 FROM
      `curso` curso
-where cur_id = $P{curso};]]>
+where cur_nombre = $P{curso};]]>
 	</queryString>
 	<field name="curso_cur_id" class="java.lang.Integer"/>
 	<field name="curso_cur_nombre" class="java.lang.String"/>

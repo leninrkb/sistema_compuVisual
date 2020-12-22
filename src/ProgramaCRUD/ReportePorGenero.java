@@ -216,7 +216,7 @@ public class ReportePorGenero extends javax.swing.JInternalFrame {
         Map parametros = new HashMap();
         parametros.put("genero", jComboBox1_genero.getSelectedItem().toString());
             try {
-                JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reportePorGenero.jrxml");
+                JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reportePorGenero.jrxml");
                 JasperPrint print;
                 print = JasperFillManager.fillReport(reporte, parametros, cn);
                 //JasperViewer.viewReport(print,false);

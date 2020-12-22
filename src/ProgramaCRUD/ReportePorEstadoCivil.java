@@ -222,8 +222,9 @@ public final class ReportePorEstadoCivil extends javax.swing.JInternalFrame {
     private void reporteEstadoCivil() {
         Map parametros = new HashMap();
         parametros.put("est_civ", jComboBox1_estadoCivil.getSelectedItem().toString());
+        
         try {
-            JasperReport reporte = JasperCompileManager.compileReport("D:\\Documents\\Codigos\\NetBeansProjects\\CRUD\\src\\ReportesCRUD\\reportePorEstadoCivil.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("src\\ReportesCRUD\\reportePorEstadoCivil.jrxml");
             JasperPrint print;
             print = JasperFillManager.fillReport(reporte, parametros, cn);
             //JasperViewer.viewReport(print,false);
